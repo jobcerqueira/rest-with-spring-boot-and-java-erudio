@@ -10,5 +10,4 @@ public class UnsupportedMathOperationException extends RuntimeException {
 		super(ex);
 	}
 
-	private static final long serialVersionUID = 1L;
-}
+	private static final long serialVersionUID = 1L;}
