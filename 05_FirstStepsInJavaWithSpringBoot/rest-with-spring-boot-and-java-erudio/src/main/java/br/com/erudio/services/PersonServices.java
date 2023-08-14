@@ -1,8 +1,6 @@
 package br.com.erudio.services;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +18,8 @@ public class PersonServices {
 	private Logger logger = Logger.getLogger(PersonServices.class.getName());
 	
 	@Autowired
-	PersonRepository repository;
+	PersonRepository repository;	
+	
 	
 	public List<PersonVO> findAll() {	
 		logger.info("Finding a mock person list");
@@ -40,7 +39,8 @@ public class PersonServices {
 		var entity = DozerMapper.parseObject(person, Person.class);
 		var vo = DozerMapper.parseObject(repository.save(entity), PersonVO.class);
 		return vo;
-	}
+	}	
+	
 	
 	public PersonVO update(PersonVO person) {
 		logger.info("Updating one person");		

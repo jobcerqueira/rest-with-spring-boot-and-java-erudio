@@ -10,7 +10,7 @@ import br.com.erudio.data.vo.v1.PersonVO;
 import br.com.erudio.services.PersonServices;
 
 @RestController	
-@RequestMapping("/person")
+@RequestMapping("/api/person/v1")
 public class PersonController {
 	
 	@Autowired
@@ -36,7 +36,7 @@ public class PersonController {
 	public PersonVO create(@RequestBody PersonVO person) 	
 	{
 		return service.create(person);	
-	}
+	}		
 	
 	@PutMapping(
             consumes = MediaType.APPLICATION_JSON_VALUE,
