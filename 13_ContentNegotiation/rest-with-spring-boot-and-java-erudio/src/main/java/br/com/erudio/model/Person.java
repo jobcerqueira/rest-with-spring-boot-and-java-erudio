@@ -1,29 +1,42 @@
-package br.com.erudio.data.vo.v1;
+package br.com.erudio.model;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-public class PersonVO implements Serializable {
+@Entity
+@Table(name = "person")
+public class Person implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 	
-	private String firstName;
-	private String lastName;
+	@Column(name="first_name", nullable = false, length = 80)
+    private String firstName;
 	
-	private String address;
-	private String gender;
+	@Column(name="last_name", nullable = false, length = 80)
+    private String lastName;
 	
-	public PersonVO() {}
-	public Long getId() {
+	@Column(nullable = false, length = 100)
+    private String address;
+    
+	@Column(nullable = false, length = 6)
+    private String gender;
+	
+	public Person() {}
+	public long getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getFirstName() {
@@ -62,7 +75,7 @@ public class PersonVO implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PersonVO other = (PersonVO) obj;
+		Person other = (Person) obj;
 		return Objects.equals(address, other.address) && Objects.equals(firstName, other.firstName)
 				&& Objects.equals(gender, other.gender) && id == other.id && Objects.equals(lastName, other.lastName);
 	}
